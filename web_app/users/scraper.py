@@ -1,6 +1,5 @@
-import os
 import re
-
+import os
 from keras.preprocessing.text import Tokenizer
 from keras.preprocessing.sequence import pad_sequences
 from keras.models import load_model
@@ -33,8 +32,9 @@ SEQUENCE_LENGTH = 300
 SENTIMENT_THRESHOLDS = (0.4, 0.7)
 
 tokenizer = Tokenizer()
+project_root = os.path.abspath(os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-with open('/home/hamza/Desktop/Smart_tweet/trained_models/tokenizer.pkl', 'rb') as f:
+with open(project_root + '/trained_models/tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
 
@@ -52,7 +52,7 @@ def predict(text):
         return "NEUTRAL"
 
 
-model = load_model('/home/hamza/Desktop/Smart_tweet/trained_models/model.h5')
+model = load_model(project_root + '/trained_models/model.h5')
 
 translator = google_translator()
 ACCESS_TOKEN = "241949174-J7mlaEePXSl59Ee7SUSWxJ7UX1pIunz6dTck9IaK"
@@ -68,14 +68,16 @@ while True:
     for status in tweepy.Cursor(api.home_timeline, include_entities=True).items(50):
         if 'media' in status.entities:
             for media in status.extended_entities['media']:
-
-                tweet_text = translator.translate(status._json["text"], lang_tgt='en')
-                tweet_url = (re.search("(?P<url>https?://[^\s]+)", tweet_text).group("url"))
-                tweet = Tweet(status._json["id"], tweet_text.replace(tweet_url, ''), tweet_url,
-                              media['media_url'], status.created_at, predict(tweet_text))
-                tweets.add(tweet)
-                print(tweet)
-                posts.insert(
-                    {"id": tweet.id, "tweet_text": tweet.text, "tweet_url": tweet.tweet_url,
-                     "media_url": tweet.media_url, "date": tweet.date, "type": tweet.type})
+                try:
+                    tweet_text = translator.translate(status._json["text"], lang_tgt='en')
+                    tweet_url = (re.search("(?P<url>https?://[^\s]+)", tweet_text).group("url"))
+                    tweet = Tweet(status._json["id"], tweet_text.replace(tweet_url, ''), tweet_url,
+                                  media['media_url'], status.created_at, predict(tweet_text))
+                    tweets.add(tweet)
+                    print(tweet)
+                    posts.insert(
+                        {"id": tweet.id, "tweet_text": tweet.text, "tweet_url": tweet.tweet_url,
+                         "media_url": tweet.media_url, "date": tweet.date, "type": tweet.type})
+                except:
+                    continue
     sleep(10)
