@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- section -->
+    <div class="section" style="margin-top: 5%">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-row">
+                        <h3>Contact Information</h3>
+                        <p>To better serve you, we kindly ask you to fill in all the form fields.<br>
+                            The more we know, the more we are able to help.</p>
+                        <ul class="list-style">
+                            <li><p><strong>Email:</strong> hamza.kacem@ensi-uma.tn</p></li>
+                            <li><p><strong>Phone:</strong> +216 52982553</p></li>
+                            <li><p><strong>Address:</strong> Dr.-Hans-Kapfinger-Str. 13 94032 Passau </p></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="section-row">
+                        <h3>Send A Message</h3>
+                        <form method="post" >
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <span>Email</span>
+                                        <input class="input" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-7">
+                                    <div class="form-group">
+                                        <span>Subject</span>
+                                        <input class="input" type="text" name="subject">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <textarea class="input" name="message" placeholder="Message"></textarea>
+                                    </div>
+                                    <button class="primary-button">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+{% endblock content %}

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- section -->
+    <div class="section" style="margin-top: 5%; margin-left: 30%">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="section-row">
+                        <h1>Registration Form</h1><br>
+                        <form method="post" id="myform">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Username </span>
+                                        <input class="input" type="text" name="username">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Email</span>
+                                        <input class="input" type="email" name="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Password</span>
+                                        <input class="input" type="password" id="password" name="password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Password Confirmation</span>
+                                        <input class="input" type="password" id="confirm_password"
+                                               name="confirm_password" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        {{ recaptcha }}
+                                        <div class="g-recaptcha"
+                                             data-sitekey="6Le9ZrMZAAAAADc_WhUSS_JTDMHTPqE-KbFvVrv7"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="primary-button">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <script src="/static/js/verifyrecaptcha.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="/static/js/verifypassword.js"></script>
+{% endblock content %}

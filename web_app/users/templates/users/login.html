@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- section -->
+    <div class="section" style="margin-top: 5%; margin-left: 30%">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="section-row">
+                        <h1>Login</h1><br>
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Username</span>
+                                        <input class="input" type="text" name="username">
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="form-group">
+                                        <span>Password</span>
+                                        <input class="input" type="password" name="password">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="primary-button">Login</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+{% endblock content %}
