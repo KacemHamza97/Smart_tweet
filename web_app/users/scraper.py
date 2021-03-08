@@ -1,3 +1,4 @@
+import os
 import re
 
 from keras.preprocessing.text import Tokenizer
@@ -32,7 +33,8 @@ SEQUENCE_LENGTH = 300
 SENTIMENT_THRESHOLDS = (0.4, 0.7)
 
 tokenizer = Tokenizer()
-with open('/home/hamza/Desktop/project/trained_models/tokenizer.pkl', 'rb') as f:
+
+with open('/home/hamza/Desktop/Smart_tweet/trained_models/tokenizer.pkl', 'rb') as f:
     tokenizer = pickle.load(f)
 
 
@@ -50,7 +52,7 @@ def predict(text):
         return "NEUTRAL"
 
 
-model = load_model('/home/hamza/Desktop/project/trained_models/model.h5')
+model = load_model('/home/hamza/Desktop/Smart_tweet/trained_models/model.h5')
 
 translator = google_translator()
 ACCESS_TOKEN = "241949174-J7mlaEePXSl59Ee7SUSWxJ7UX1pIunz6dTck9IaK"
