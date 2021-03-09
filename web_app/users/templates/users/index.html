@@ -16,14 +16,14 @@
                 {% for post in all_posts %}
                     <div class="col-md-4">
                         <div class="post">
-                            <a class="post-img" href="#"><img src={{ post["media_url"] }} width="20%" height="200px"></a>
+                            <a class="post-img" href="#"><img src={{ post["media_url"] }} width="18%" height="200px"></a>
                             <div class="post-body">
                                 <div class="post-meta">
                                     <a class="post-category cat-1" href="#">{{ post["type"] }}</a>
                                     <span class="post-date">{{ post["date"] }}</span>
                                 </div>
                                 <h3 class="post-title"><a
-                                        href={{ post["tweet_url"] }}>{{ post["tweet_text"][:76] }}... </a></h3>
+                                        href={{ post["tweet_url"] }}>{{ post["tweet_text"][:70] }}... </a></h3>
                             </div>
                         </div>
                     </div>
